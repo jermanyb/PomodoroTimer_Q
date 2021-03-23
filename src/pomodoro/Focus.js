@@ -7,15 +7,15 @@ const Focus = ({ currentFocus, setCurrentFocus, setActualFocus }) => {
     if (event.target.id === "decrementFocus") {
       if (!(currentFocus - 5 * 60 < 5 * 60)) {
         // subtract 5 only if currentFocus is above 5
-        setCurrentFocus(currentFocus - 5 * 60);
         setActualFocus(currentFocus - 5 * 60);
+        setCurrentFocus((currentFocus) =>  currentFocus - 5 * 60);
       } 
       
     }
     if (event.target.id === "incrementFocus") {
       if (!(currentFocus + 5 * 60 > 60 * 60)) {
-        setCurrentFocus(currentFocus + 5 * 60);
         setActualFocus(currentFocus + 5 * 60);
+        setCurrentFocus((currentFocus) => currentFocus + 5 * 60);
       } 
      
     }
