@@ -6,10 +6,12 @@ import TimeControl from "./TimeControl";
 import ShowMessage from "./ShowMessage";
 import Progression from "./Progression";
 //order matters?
-
+//useState stores info that it can modify
 
 function Pomodoro() {
   // Timer starts out paused
+  //It returns the variable, isTimerRunning. 
+  //It also returns a function, setIsTimerRunning(), that is used to update the state variable.
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [currentFocus, setCurrentFocus] = useState(25 * 60);
   const [currentBreak, setCurrentBreak] = useState(5 * 60);
@@ -21,7 +23,7 @@ function Pomodoro() {
     () => {
       // for every second, change actual focus by 1
       if (currentMode === "focus") {
-        setActualFocus(actualFocus - 1);
+        setActualFocus((actualFocus) => actualFocus - 1);
       }
       if (actualFocus === 0) {
         setCurrentMode("break");
@@ -29,7 +31,7 @@ function Pomodoro() {
         new Audio(`https://bigsoundbank.com/UPLOAD/mp3/1482.mp3`).play();
       }
       if (currentMode !== "focus") {
-        setActualBreak(actualBreak - 1);
+        setActualBreak((actualBreak) => actualBreak - 1);
       }
       if (actualBreak === 0) {
         setCurrentMode("focus");
