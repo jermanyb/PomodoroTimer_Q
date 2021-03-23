@@ -7,13 +7,13 @@ const TakeBreak = ({ currentBreak, setCurrentBreak, setActualBreak }) => {
     if (event.target.id === "decrementBreak") {
       if (!(currentBreak - 1 * 60 < 1 * 60)) {
         // if currentBreak is not less than 1 (minimum)
-        setCurrentBreak(currentBreak - 1 * 60); //then decrement by 1 min
+        setCurrentBreak((currentBreak) => currentBreak - 1 * 60); //then decrement by 1 min
         setActualBreak(currentBreak - 1 * 60);
       }
     }
     if (event.target.id === "incrementBreak") {
       if (!(currentBreak + 1 * 60 > 15 * 60)) {
-        setCurrentBreak(currentBreak + 1 * 60);
+        setCurrentBreak((currentBreak) => currentBreak + 1 * 60);
         setActualBreak(currentBreak + 1 * 60);
       }
     }
